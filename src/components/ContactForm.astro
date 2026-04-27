@@ -1,0 +1,178 @@
+---
+import Button from './Button.astro';
+---
+
+<form
+  class="contact-form"
+  method="POST"
+  action="/api/contact"
+  name="contact"
+  novalidate
+>
+  <div class="row">
+    <div class="field">
+      <label for="firstName">First name</label>
+      <input
+        type="text"
+        id="firstName"
+        name="firstName"
+        autocomplete="given-name"
+        required
+      />
+    </div>
+    <div class="field">
+      <label for="lastName">Last name</label>
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        autocomplete="family-name"
+        required
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="field">
+      <label for="email">Work email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        autocomplete="email"
+        required
+      />
+    </div>
+    <div class="field">
+      <label for="company">Company</label>
+      <input
+        type="text"
+        id="company"
+        name="company"
+        autocomplete="organization"
+        required
+      />
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="role">Your role</label>
+    <select id="role" name="role" required>
+      <option value="">Select a role</option>
+      <option>CEO / Founder</option>
+      <option>CRO / VP Sales</option>
+      <option>CMO / VP Marketing</option>
+      <option>VP / Head of RevOps</option>
+      <option>VP / Head of Growth</option>
+      <option>Other</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="interest">What can we help with?</label>
+    <select id="interest" name="interest" required>
+      <option value="">Select an area</option>
+      <option>Revenue Infrastructure</option>
+      <option>Demand Engineering</option>
+      <option>GTM Operations</option>
+      <option>Product-Led Growth</option>
+      <option>Not sure yet</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="message">Tell us a bit about your team and goals</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      required
+    ></textarea>
+  </div>
+
+  <p class="legal-note">
+    By submitting, you agree to our <a href="/privacy">Privacy Policy</a>.
+    We will never share your information.
+  </p>
+
+  <div class="actions">
+    <Button type="submit" variant="primary" size="lg">Send message</Button>
+  </div>
+</form>
+
+<style>
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: var(--space-6);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  label {
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+  }
+  input,
+  select,
+  textarea {
+    padding: 0.75rem 0.875rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--fs-sm);
+    background: var(--color-white);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  }
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--color-cyan);
+    box-shadow: 0 0 0 3px var(--color-cyan-soft);
+  }
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+  }
+  .legal-note {
+    font-size: var(--fs-xs);
+    color: var(--color-text-muted);
+    line-height: var(--lh-relaxed);
+  }
+  .legal-note a {
+    color: var(--color-cyan);
+    text-decoration: underline;
+  }
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+  @media (max-width: 600px) {
+    .row {
+      grid-template-columns: 1fr;
+    }
+    .actions {
+      justify-content: stretch;
+    }
+    .actions :global(.btn) {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

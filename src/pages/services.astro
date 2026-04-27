@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import { services } from '../data/services';
+---
+
+<BaseLayout
+  title="Services — Go-to-Market Engineering"
+  description="Revenue infrastructure, demand engineering, GTM operations, and product-led growth services for B2B SaaS and AI companies."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Services</span>
+      <h1>Go-to-Market Engineering, end to end.</h1>
+      <p class="lead">
+        Each engagement is scoped to a specific business outcome. We can lead a full GTM rebuild or embed alongside your team on a single discipline — but the bar is the same: ship infrastructure that compounds long after we leave.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="services-stack">
+        {services.map((service, idx) => (
+          <article id={service.slug} class="service-detail">
+            <div class="service-meta">
+              <span class="service-num">{String(idx + 1).padStart(2, '0')}</span>
+              <div class="icon-wrap" aria-hidden="true">
+                <Icon name={service.icon} size={22} />
+              </div>
+            </div>
+            <div class="service-body">
+              <h2>{service.title}</h2>
+              <p class="service-tagline">{service.tagline}</p>
+              <p>{service.description}</p>
+
+              <div class="cols">
+                <div>
+                  <h3>Outcomes you can expect</h3>
+                  <ul class="check-list">
+                    {service.outcomes.map((o) => <li>{o}</li>)}
+                  </ul>
+                </div>
+                <div>
+                  <h3>What we deliver</h3>
+                  <ul class="check-list">
+                    {service.deliverables.map((d) => <li>{d}</li>)}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container cta-inner">
+      <h2>Not sure which discipline you need first?</h2>
+      <p class="lead">
+        Most engagements start with a 60-minute scoping call. We will help you map your highest-leverage entry point — even if the answer is "wait six months."
+      </p>
+      <Button href="/contact" variant="primary" size="lg">Book a scoping call</Button>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding-block: var(--space-9) var(--space-8);
+    background: var(--color-off-white);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .page-hero h1 {
+    font-size: var(--fs-3xl);
+    color: var(--color-navy);
+    margin-bottom: 1rem;
+    max-width: 18ch;
+  }
+
+  .services-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-9);
+  }
+  .service-detail {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: var(--space-7);
+    align-items: start;
+    scroll-margin-top: 100px;
+  }
+  .service-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .service-num {
+    font-family: var(--font-display);
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-bold);
+    color: var(--color-cyan);
+    line-height: 1;
+  }
+  .icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background: var(--color-cyan-soft);
+    color: var(--color-cyan);
+  }
+  .service-body h2 {
+    font-size: var(--fs-2xl);
+    color: var(--color-navy);
+    margin-bottom: 0.5rem;
+    max-width: 24ch;
+  }
+  .service-tagline {
+    font-size: var(--fs-md);
+    color: var(--color-cyan);
+    font-weight: var(--fw-semibold);
+    margin-bottom: 1rem;
+  }
+  .service-body > p {
+    color: var(--color-text-muted);
+    line-height: var(--lh-relaxed);
+    max-width: 64ch;
+  }
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: var(--space-6);
+  }
+  .cols h3 {
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--color-navy);
+    margin-bottom: 1rem;
+    font-weight: var(--fw-semibold);
+  }
+  .check-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .check-list li {
+    position: relative;
+    padding-left: 1.75rem;
+    font-size: var(--fs-sm);
+    line-height: var(--lh-relaxed);
+    color: var(--color-text-muted);
+  }
+  .check-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.4em;
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    background: var(--color-cyan-soft);
+    border: 2px solid var(--color-cyan);
+  }
+  .check-list li::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 0.5em;
+    width: 5px;
+    height: 8px;
+    border: solid var(--color-cyan);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .cta-inner {
+    text-align: center;
+    max-width: 700px;
+  }
+  .cta-inner h2 {
+    font-size: var(--fs-2xl);
+    margin-bottom: 1rem;
+    color: var(--color-white);
+  }
+  .cta-inner .lead {
+    margin: 0 auto 2rem;
+  }
+
+  @media (max-width: 820px) {
+    .service-detail {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+    }
+    .cols {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,133 @@
+---
+import type { CaseStudy } from '../data/caseStudies';
+
+interface Props {
+  study: CaseStudy;
+  featured?: boolean;
+}
+
+const { study, featured = false } = Astro.props;
+---
+
+<article class:list={['case-card', { featured }]}>
+  <div class="case-meta">
+    <span class="case-industry">{study.industry}</span>
+    <span class="case-client">{study.client}</span>
+  </div>
+  <h3>{study.headline}</h3>
+  <p>{study.summary}</p>
+
+  <ul class="metrics" aria-label={`Key metrics for ${study.client}`}>
+    {study.metrics.map((m) => (
+      <li>
+        <strong>{m.value}</strong>
+        <span>{m.label}</span>
+      </li>
+    ))}
+  </ul>
+
+  <div class="case-tags" aria-label="Services applied">
+    {study.services.map((s) => <span class="tag">{s}</span>)}
+  </div>
+</article>
+
+<style>
+  .case-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+    padding: var(--space-6);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  }
+  .case-card:hover {
+    border-color: var(--color-cyan);
+    box-shadow: var(--shadow-md);
+  }
+  .case-card.featured {
+    background: var(--gradient-navy);
+    color: var(--color-text-inverse);
+    border-color: transparent;
+  }
+  .case-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: var(--fw-semibold);
+  }
+  .case-industry {
+    color: var(--color-cyan);
+  }
+  .case-client {
+    color: var(--color-text-muted);
+  }
+  .case-card.featured .case-client {
+    color: var(--color-text-inverse-muted);
+  }
+  .case-card h3 {
+    font-size: var(--fs-lg);
+    line-height: var(--lh-snug);
+    color: var(--color-navy);
+  }
+  .case-card.featured h3 {
+    color: var(--color-white);
+  }
+  .case-card p {
+    color: var(--color-text-muted);
+    font-size: var(--fs-sm);
+    line-height: var(--lh-relaxed);
+  }
+  .case-card.featured p {
+    color: var(--color-text-inverse-muted);
+  }
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding-block: 1rem;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .case-card.featured .metrics {
+    border-color: var(--color-border-inverse);
+  }
+  .metrics li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .metrics strong {
+    font-family: var(--font-display);
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-bold);
+    color: var(--color-cyan);
+  }
+  .metrics span {
+    font-size: var(--fs-xs);
+    color: var(--color-text-muted);
+  }
+  .case-card.featured .metrics span {
+    color: var(--color-text-inverse-muted);
+  }
+  .case-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .tag {
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
+    padding: 0.3rem 0.7rem;
+    border-radius: var(--radius-pill);
+    background: var(--color-cyan-soft);
+    color: var(--color-cyan);
+  }
+  .case-card.featured .tag {
+    background: rgba(0, 194, 209, 0.18);
+  }
+</style>

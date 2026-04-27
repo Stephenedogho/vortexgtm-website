@@ -1,0 +1,30 @@
+---
+interface Props {
+  name: string;
+  size?: number;
+}
+
+const { name, size = 28 } = Astro.props;
+
+const paths: Record<string, string> = {
+  circuit: 'M5 7h4v4H5zM15 13h4v4h-4zM7 11v6M9 17h6M17 7v6',
+  pulse: 'M3 12h4l3-9 4 18 3-9h4',
+  gear: 'M12 8a4 4 0 100 8 4 4 0 000-8zm0-6v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1',
+  spark: 'M12 2v6M12 16v6M2 12h6M16 12h6M5 5l4 4M15 15l4 4M5 19l4-4M15 9l4-4',
+  arrow: 'M5 12h14M13 6l6 6-6 6',
+};
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.75"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  <path d={paths[name] ?? paths.spark} />
+</svg>

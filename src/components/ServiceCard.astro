@@ -1,0 +1,99 @@
+---
+import Icon from './Icon.astro';
+import type { Service } from '../data/services';
+
+interface Props {
+  service: Service;
+  href?: string;
+}
+
+const { service, href = `/services#${service.slug}` } = Astro.props;
+---
+
+<a class="service-card" href={href}>
+  <div class="icon-wrap">
+    <Icon name={service.icon} size={26} />
+  </div>
+  <h3>{service.shortTitle}</h3>
+  <p class="card-tagline">{service.tagline}</p>
+  <span class="learn-more">
+    Learn more
+    <span aria-hidden="true">→</span>
+  </span>
+</a>
+
+<style>
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    padding: var(--space-6);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition:
+      transform var(--transition-base),
+      border-color var(--transition-base),
+      box-shadow var(--transition-base);
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-cyan);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    z-index: 0;
+    height: 4px;
+    bottom: auto;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-cyan);
+    box-shadow: var(--shadow-md);
+  }
+  .service-card:hover::before {
+    opacity: 1;
+  }
+  .service-card > * {
+    position: relative;
+    z-index: 1;
+  }
+  .icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background: var(--color-cyan-soft);
+    color: var(--color-cyan);
+  }
+  .service-card h3 {
+    font-size: var(--fs-lg);
+    color: var(--color-navy);
+  }
+  .card-tagline {
+    color: var(--color-text-muted);
+    font-size: var(--fs-sm);
+    line-height: var(--lh-relaxed);
+    flex: 1;
+  }
+  .learn-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semibold);
+    color: var(--color-cyan);
+  }
+  .learn-more span {
+    transition: transform var(--transition-base);
+  }
+  .service-card:hover .learn-more span {
+    transform: translateX(3px);
+  }
+</style>

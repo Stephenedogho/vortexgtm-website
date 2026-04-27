@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Get in touch with VORTEX GTM. Tell us about your team and goals — we will respond within one business day."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Contact</span>
+      <h1>Tell us where you are heading.</h1>
+      <p class="lead">
+        We respond to every inquiry within one business day. If we are the right team for you, we will book a 60-minute scoping call to map the work. If we are not, we will tell you who is.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="info-block">
+            <h2>Email</h2>
+            <a href={`mailto:${site.email}`} class="info-link">{site.email}</a>
+            <p class="info-note">Best for new engagement inquiries and partnerships.</p>
+          </div>
+
+          <div class="info-block">
+            <h2>Phone</h2>
+            <a href={`tel:${site.phone.replace(/\s/g, '')}`} class="info-link">{site.phone}</a>
+            <p class="info-note">Mon–Fri, 8am–6pm Pacific.</p>
+          </div>
+
+          <div class="info-block">
+            <h2>Office</h2>
+            <address>
+              {site.address.line1}<br />
+              {site.address.line2}<br />
+              {site.address.city}, {site.address.region} {site.address.postal}<br />
+              {site.address.country}
+            </address>
+          </div>
+
+          <div class="info-block info-callout">
+            <h2>Already a client?</h2>
+            <p class="info-note">
+              Reach your engagement lead directly, or email <a href={`mailto:${site.email}`}>{site.email}</a> and we will route you.
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap">
+          <ContactForm />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding-block: var(--space-9) var(--space-8);
+    background: var(--color-off-white);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .page-hero h1 {
+    font-size: var(--fs-3xl);
+    color: var(--color-navy);
+    margin-bottom: 1rem;
+    max-width: 18ch;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: var(--space-7);
+    align-items: start;
+  }
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  .info-block h2 {
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--color-cyan);
+    margin-bottom: 0.5rem;
+    font-weight: var(--fw-semibold);
+  }
+  .info-link {
+    font-size: var(--fs-md);
+    font-weight: var(--fw-semibold);
+    color: var(--color-navy);
+  }
+  .info-link:hover {
+    color: var(--color-cyan);
+  }
+  .info-note {
+    color: var(--color-text-muted);
+    font-size: var(--fs-sm);
+    line-height: var(--lh-relaxed);
+    margin-top: 0.5rem;
+  }
+  .info-note a {
+    color: var(--color-cyan);
+    text-decoration: underline;
+  }
+  address {
+    font-style: normal;
+    color: var(--color-text);
+    font-size: var(--fs-sm);
+    line-height: var(--lh-relaxed);
+  }
+  .info-callout {
+    padding: var(--space-5);
+    background: var(--color-off-white);
+    border-left: 3px solid var(--color-cyan);
+    border-radius: var(--radius-sm);
+  }
+
+  @media (max-width: 820px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Terms of Service"
+  description="VORTEX GTM terms of service."
+  noindex
+>
+  <section class="legal-page">
+    <div class="container-narrow">
+      <span class="eyebrow">Legal</span>
+      <h1>Terms of Service</h1>
+      <p class="updated">Last updated: April 27, 2026</p>
+
+      <p class="lead">
+        This is a placeholder Terms of Service. The published terms will govern use of vortexgtm.com and the services VORTEX GTM provides.
+      </p>
+
+      <h2>Use of the site</h2>
+      <p>Placeholder content describing acceptable use of this website and any associated digital properties.</p>
+
+      <h2>Intellectual property</h2>
+      <p>Placeholder content covering trademarks, copyrights, and content ownership.</p>
+
+      <h2>Engagement terms</h2>
+      <p>Engagement-specific terms are governed by individually executed Master Services Agreements and Statements of Work, not by this page.</p>
+
+      <h2>Contact</h2>
+      <p>Questions about these terms can be sent to <a href="mailto:hello@vortexgtm.com">hello@vortexgtm.com</a>.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-page {
+    padding-block: var(--space-9);
+  }
+  h1 {
+    font-size: var(--fs-3xl);
+    color: var(--color-navy);
+    margin-block: 0.5rem 1rem;
+  }
+  .updated {
+    color: var(--color-text-muted);
+    font-size: var(--fs-sm);
+    margin-bottom: var(--space-6);
+  }
+  h2 {
+    font-size: var(--fs-lg);
+    color: var(--color-navy);
+    margin-block: var(--space-6) 0.75rem;
+  }
+  p {
+    color: var(--color-text-muted);
+    line-height: var(--lh-relaxed);
+    margin-bottom: 1rem;
+  }
+  .lead {
+    margin-bottom: var(--space-5);
+  }
+  a {
+    color: var(--color-cyan);
+    text-decoration: underline;
+  }
+</style>

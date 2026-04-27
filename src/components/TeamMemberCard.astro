@@ -1,0 +1,65 @@
+---
+import type { TeamMember } from '../data/team';
+
+interface Props {
+  member: TeamMember;
+}
+
+const { member } = Astro.props;
+---
+
+<article class="team-card">
+  <div class="avatar" aria-hidden="true">{member.initials}</div>
+  <h3>{member.name}</h3>
+  <p class="role">{member.role}</p>
+  <p class="bio">{member.bio}</p>
+</article>
+
+<style>
+  .team-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    padding: var(--space-6);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  }
+  .team-card:hover {
+    border-color: var(--color-cyan);
+    box-shadow: var(--shadow-md);
+  }
+  .avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--gradient-cyan);
+    color: var(--color-dark-navy);
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-md);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+  h3 {
+    font-size: var(--fs-md);
+    color: var(--color-navy);
+  }
+  .role {
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-cyan);
+    font-weight: var(--fw-semibold);
+  }
+  .bio {
+    color: var(--color-text-muted);
+    font-size: var(--fs-sm);
+    line-height: var(--lh-relaxed);
+    margin-top: 0.25rem;
+  }
+</style>

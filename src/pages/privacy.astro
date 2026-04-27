@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="VORTEX GTM privacy policy."
+  noindex
+>
+  <section class="legal-page">
+    <div class="container-narrow">
+      <span class="eyebrow">Legal</span>
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated: April 27, 2026</p>
+
+      <p class="lead">
+        This is a placeholder Privacy Policy. The published policy will describe what personal data VORTEX GTM collects, how we use and store it, what choices you have, and how to contact us about it.
+      </p>
+
+      <h2>Information we collect</h2>
+      <p>Placeholder content describing the categories of personal information collected via this site, our contact forms, and our engagement processes.</p>
+
+      <h2>How we use information</h2>
+      <p>Placeholder content describing the purposes for which personal information is processed.</p>
+
+      <h2>Your rights</h2>
+      <p>Placeholder content describing the rights available under applicable privacy law (GDPR, CCPA, etc.).</p>
+
+      <h2>Contact</h2>
+      <p>Questions about this policy can be sent to <a href="mailto:hello@vortexgtm.com">hello@vortexgtm.com</a>.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-page {
+    padding-block: var(--space-9);
+  }
+  h1 {
+    font-size: var(--fs-3xl);
+    color: var(--color-navy);
+    margin-block: 0.5rem 1rem;
+  }
+  .updated {
+    color: var(--color-text-muted);
+    font-size: var(--fs-sm);
+    margin-bottom: var(--space-6);
+  }
+  h2 {
+    font-size: var(--fs-lg);
+    color: var(--color-navy);
+    margin-block: var(--space-6) 0.75rem;
+  }
+  p {
+    color: var(--color-text-muted);
+    line-height: var(--lh-relaxed);
+    margin-bottom: 1rem;
+  }
+  .lead {
+    margin-bottom: var(--space-5);
+  }
+  a {
+    color: var(--color-cyan);
+    text-decoration: underline;
+  }
+</style>

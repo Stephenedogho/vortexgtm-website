@@ -1,0 +1,244 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CaseStudyCard from '../components/CaseStudyCard.astro';
+import ClientLogoStrip from '../components/ClientLogoStrip.astro';
+import { services } from '../data/services';
+import { caseStudies } from '../data/caseStudies';
+
+const featuredStudies = caseStudies.slice(0, 2);
+---
+
+<BaseLayout
+  title="Go-to-Market Engineering Agency"
+  description="VORTEX GTM is a Go-to-Market engineering agency that builds revenue infrastructure, demand systems, and pipeline operations for B2B SaaS and AI companies."
+>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <span class="eyebrow hero-eyebrow">Go-to-Market Engineering</span>
+      <h1>
+        Engineer the GTM motion that <span class="grad">your category leader</span> will spend the next decade copying.
+      </h1>
+      <p class="hero-lead">
+        VORTEX is a specialist agency for B2B SaaS and AI teams. We architect the revenue infrastructure, demand engines, and operating systems that turn growth from a quarterly scramble into a compounding asset.
+      </p>
+      <div class="hero-ctas">
+        <Button href="/contact" variant="primary" size="lg">Book an intro call</Button>
+        <Button href="/services" variant="ghost" size="lg">Explore services</Button>
+      </div>
+
+      <dl class="hero-stats">
+        <div>
+          <dt>Avg. forecast accuracy lift</dt>
+          <dd>+32%</dd>
+        </div>
+        <div>
+          <dt>Pipeline acceleration</dt>
+          <dd>2–4×</dd>
+        </div>
+        <div>
+          <dt>CAC payback compression</dt>
+          <dd>−47%</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">What we do</span>
+          <h2>Four disciplines. One operating system for revenue.</h2>
+        </div>
+        <p class="lead">
+          We embed alongside your team to ship the foundational systems that compound. Each service stands alone — together they form the engine.
+        </p>
+      </div>
+
+      <div class="service-grid">
+        {services.map((service) => <ServiceCard service={service} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTS -->
+  <ClientLogoStrip />
+
+  <!-- FEATURED CASE STUDIES -->
+  <section class="section section-soft">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Selected work</span>
+          <h2>What an engineered GTM motion actually delivers.</h2>
+        </div>
+        <a class="see-all" href="/case-studies">
+          All case studies <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <div class="case-grid">
+        {featuredStudies.map((study) => <CaseStudyCard study={study} featured />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-dark">
+    <div class="container cta-inner">
+      <h2>Ready to engineer your next phase of growth?</h2>
+      <p class="lead">
+        Tell us where you are heading. We will share an honest read on whether VORTEX is the right team to help you get there.
+      </p>
+      <Button href="/contact" variant="primary" size="lg">Start the conversation</Button>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    isolation: isolate;
+    padding-block: clamp(4rem, 10vw, 8rem) clamp(4rem, 8vw, 6rem);
+    background: var(--color-dark-navy);
+    color: var(--color-text-inverse);
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 80% 0%, rgba(0, 194, 209, 0.18), transparent 55%),
+      radial-gradient(ellipse at 0% 100%, rgba(46, 230, 245, 0.10), transparent 60%),
+      var(--gradient-hero);
+    z-index: -1;
+  }
+  .hero-inner {
+    max-width: 880px;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    color: var(--color-cyan-bright);
+  }
+  .hero h1 {
+    font-size: var(--fs-hero);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  .grad {
+    background: var(--gradient-cyan);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero-lead {
+    font-size: var(--fs-md);
+    line-height: var(--lh-relaxed);
+    color: var(--color-text-inverse-muted);
+    margin: 0 auto 2rem;
+    max-width: 64ch;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--color-border-inverse);
+    text-align: center;
+  }
+  .hero-stats dt {
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--color-text-inverse-muted);
+    margin-bottom: 0.5rem;
+  }
+  .hero-stats dd {
+    font-family: var(--font-display);
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-bold);
+    color: var(--color-cyan-bright);
+  }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: var(--space-7);
+    align-items: end;
+  }
+  .section-head h2 {
+    font-size: var(--fs-2xl);
+    color: var(--color-navy);
+    max-width: 18ch;
+  }
+  .section-dark .section-head h2,
+  .section-navy .section-head h2 {
+    color: var(--color-white);
+  }
+  .see-all {
+    justify-self: end;
+    color: var(--color-cyan);
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-sm);
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .case-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .cta-inner {
+    text-align: center;
+    max-width: 700px;
+  }
+  .cta-inner h2 {
+    font-size: var(--fs-2xl);
+    margin-bottom: 1rem;
+    color: var(--color-white);
+  }
+  .cta-inner .lead {
+    margin: 0 auto 2rem;
+  }
+
+  @media (max-width: 980px) {
+    .service-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .case-grid,
+    .section-head {
+      grid-template-columns: 1fr;
+    }
+    .see-all {
+      justify-self: start;
+    }
+  }
+  @media (max-width: 540px) {
+    .service-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-stats {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>

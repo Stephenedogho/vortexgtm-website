@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import TeamMemberCard from '../components/TeamMemberCard.astro';
+import { team, coreValues } from '../data/team';
+---
+
+<BaseLayout
+  title="About"
+  description="VORTEX GTM is a senior team of GTM operators-turned-engineers. We build revenue infrastructure for B2B SaaS and AI companies who refuse to scale by brute force."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">About VORTEX</span>
+      <h1>A senior team of operators who got tired of building the same systems twice.</h1>
+      <p class="lead">
+        VORTEX exists because too many growth-stage companies inherit fragile go-to-market machinery — held together by spreadsheets, tribal knowledge, and the patience of one heroic ops lead. We rebuild that machinery as durable infrastructure, then teach your team to own it.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="narrative">
+        <div class="narrative-col">
+          <h2>Our story</h2>
+          <p>
+            VORTEX was founded by a group of former CROs, RevOps leaders, and growth engineers who had each spent a decade inside high-growth B2B companies. We had seen the same pattern repeat across nine and ten-figure companies: sophisticated products sold by go-to-market teams running on brittle, improvised infrastructure.
+          </p>
+          <p>
+            We started VORTEX to do the work most agencies will not — the deep, multi-quarter engineering of the systems that quietly determine whether a company hits its plan. We are small by design. Every engagement is led by a partner.
+          </p>
+        </div>
+        <div class="narrative-col">
+          <h2>Our approach</h2>
+          <p>
+            We treat GTM as engineering. That means: defined interfaces between teams, explicit data contracts between systems, version-controlled playbooks, and metrics with names and owners. It is unglamorous work. It is also the work that lets a 40-person sales team perform like a 200-person one.
+          </p>
+          <p>
+            We are not interested in being a long-term dependency. The best signal of a successful engagement is when the client's internal team can confidently take the keys.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Core values</span>
+        <h2>Four principles we hold each other to.</h2>
+      </div>
+      <div class="values-grid">
+        {coreValues.map((value, i) => (
+          <div class="value-card">
+            <span class="value-num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{value.title}</h3>
+            <p>{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">The team</span>
+        <h2>The partners and operators who will be in the room.</h2>
+      </div>
+      <div class="team-grid">
+        {team.map((member) => <TeamMemberCard member={member} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container cta-inner">
+      <h2>Want to work with us?</h2>
+      <p class="lead">
+        We take on a small number of engagements per quarter. The earlier the conversation starts, the better we can shape it around your goals.
+      </p>
+      <Button href="/contact" variant="primary" size="lg">Get in touch</Button>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding-block: var(--space-9) var(--space-8);
+    background: var(--color-off-white);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .page-hero h1 {
+    font-size: var(--fs-3xl);
+    color: var(--color-navy);
+    margin-bottom: 1rem;
+    max-width: 22ch;
+  }
+
+  .narrative {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-7);
+  }
+  .narrative-col h2 {
+    font-size: var(--fs-xl);
+    color: var(--color-navy);
+    margin-bottom: 1rem;
+  }
+  .narrative-col p {
+    color: var(--color-text-muted);
+    line-height: var(--lh-relaxed);
+    margin-bottom: 1rem;
+    max-width: 60ch;
+  }
+
+  .section-head {
+    margin-bottom: var(--space-7);
+  }
+  .section-head h2 {
+    font-size: var(--fs-2xl);
+    color: var(--color-navy);
+    max-width: 24ch;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .value-card {
+    padding: var(--space-6);
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+  .value-num {
+    font-family: var(--font-display);
+    font-size: var(--fs-md);
+    font-weight: var(--fw-bold);
+    color: var(--color-cyan);
+    letter-spacing: 0.05em;
+  }
+  .value-card h3 {
+    font-size: var(--fs-md);
+    color: var(--color-navy);
+    margin-block: 0.75rem 0.5rem;
+  }
+  .value-card p {
+    color: var(--color-text-muted);
+    font-size: var(--fs-sm);
+    line-height: var(--lh-relaxed);
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .cta-inner {
+    text-align: center;
+    max-width: 700px;
+  }
+  .cta-inner h2 {
+    font-size: var(--fs-2xl);
+    margin-bottom: 1rem;
+    color: var(--color-white);
+  }
+  .cta-inner .lead {
+    margin: 0 auto 2rem;
+  }
+
+  @media (max-width: 820px) {
+    .narrative,
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+    .team-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 540px) {
+    .team-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

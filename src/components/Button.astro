@@ -1,0 +1,88 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'md' | 'lg';
+  type?: 'button' | 'submit' | 'reset';
+  class?: string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  type = 'button',
+  class: className = '',
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+const classes = ['btn', `btn-${variant}`, `btn-${size}`, className].filter(Boolean).join(' ');
+---
+
+<Tag class={classes} href={href} type={href ? undefined : type}>
+  <slot />
+  <span class="btn-arrow" aria-hidden="true">→</span>
+</Tag>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-sm);
+    letter-spacing: 0.01em;
+    border-radius: var(--radius-pill);
+    transition:
+      background var(--transition-base),
+      color var(--transition-base),
+      transform var(--transition-base),
+      box-shadow var(--transition-base);
+    white-space: nowrap;
+    line-height: 1;
+  }
+  .btn-md {
+    padding: 0.75rem 1.25rem;
+  }
+  .btn-lg {
+    padding: 1rem 1.75rem;
+    font-size: var(--fs-base);
+  }
+  .btn-arrow {
+    display: inline-block;
+    transition: transform var(--transition-base);
+  }
+  .btn:hover .btn-arrow {
+    transform: translateX(3px);
+  }
+
+  .btn-primary {
+    background: var(--gradient-cyan);
+    color: var(--color-dark-navy);
+    box-shadow: 0 8px 24px rgba(0, 194, 209, 0.3);
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 32px rgba(0, 194, 209, 0.4);
+  }
+
+  .btn-secondary {
+    background: var(--color-white);
+    color: var(--color-navy);
+    border: 1px solid var(--color-border);
+  }
+  .btn-secondary:hover {
+    border-color: var(--color-cyan);
+    color: var(--color-cyan);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: inherit;
+    border: 1px solid currentColor;
+    opacity: 0.85;
+  }
+  .btn-ghost:hover {
+    opacity: 1;
+  }
+</style>
