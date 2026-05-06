@@ -85,6 +85,12 @@
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --transition-fast: 120ms var(--ease-out);
   --transition-base: 200ms var(--ease-out);
+
+  /* ---------- Background Textures ----------
+     SVG data URIs — zero extra HTTP requests, scale on any DPI. */
+  --texture-dots: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><circle cx='12' cy='12' r='1' fill='%230a2540' opacity='0.18'/></svg>");
+  --texture-dots-cyan: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><circle cx='12' cy='12' r='1' fill='%2300c2d1' opacity='0.28'/></svg>");
+  --texture-noise: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
 }
 
 /* =========================================================
@@ -113,7 +119,10 @@ body {
   font-size: var(--fs-base);
   line-height: var(--lh-normal);
   color: var(--color-text);
-  background: var(--color-white);
+  background-color: var(--color-white);
+  background-image: var(--texture-dots);
+  background-size: 24px 24px;
+  background-repeat: repeat;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -186,17 +195,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-dark {
-  background: var(--color-dark-navy);
+  background-color: var(--color-dark-navy);
+  background-image: var(--texture-noise), var(--texture-dots-cyan);
+  background-size: 240px 240px, 24px 24px;
+  background-repeat: repeat;
   color: var(--color-text-inverse);
 }
 
 .section-navy {
-  background: var(--color-navy);
+  background-color: var(--color-navy);
+  background-image: var(--texture-noise), var(--texture-dots-cyan);
+  background-size: 240px 240px, 24px 24px;
+  background-repeat: repeat;
   color: var(--color-text-inverse);
 }
 
 .section-soft {
-  background: var(--color-off-white);
+  background-color: var(--color-off-white);
+  background-image: var(--texture-dots);
+  background-size: 24px 24px;
+  background-repeat: repeat;
 }
 
 /* =========================================================

@@ -111,10 +111,14 @@ const featuredStudies = caseStudies.slice(0, 2);
   .hero-bg {
     position: absolute;
     inset: 0;
-    background:
+    background-image:
+      var(--texture-noise),
+      var(--texture-dots-cyan),
       radial-gradient(ellipse at 80% 0%, rgba(0, 194, 209, 0.18), transparent 55%),
       radial-gradient(ellipse at 0% 100%, rgba(46, 230, 245, 0.10), transparent 60%),
       var(--gradient-hero);
+    background-size: 240px 240px, 24px 24px, auto, auto, auto;
+    background-repeat: repeat;
     z-index: -1;
   }
   .hero-inner {
