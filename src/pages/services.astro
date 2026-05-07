@@ -10,8 +10,9 @@ import { services } from '../data/services';
   description="Revenue infrastructure, demand engineering, GTM operations, and product-led growth services for B2B SaaS and AI companies."
 >
   <section class="page-hero">
+    <div class="page-hero-bloom" aria-hidden="true"></div>
     <div class="container">
-      <span class="eyebrow">Services</span>
+      <span class="eyebrow">// Services</span>
       <h1>Go-to-Market Engineering, end to end.</h1>
       <p class="lead">
         Each engagement is scoped to a specific business outcome. We can lead a full GTM rebuild or embed alongside your team on a single discipline — but the bar is the same: ship infrastructure that compounds long after we leave.
@@ -69,18 +70,30 @@ import { services } from '../data/services';
 
 <style>
   .page-hero {
+    position: relative;
     padding-block: var(--space-9) var(--space-8);
-    background-color: var(--color-off-white);
-    background-image: var(--texture-dots);
-    background-size: 24px 24px;
-    background-repeat: repeat;
-    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .page-hero-bloom {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 50% 60% at 30% 40%, rgba(0, 87, 255, 0.32) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 75% 70%, rgba(0, 200, 255, 0.18) 0%, transparent 60%);
+    filter: blur(40px);
+    z-index: -1;
+    pointer-events: none;
   }
   .page-hero h1 {
+    font-family: var(--font-display);
     font-size: var(--fs-3xl);
-    color: var(--color-navy);
-    margin-bottom: 1rem;
+    font-weight: var(--fw-medium);
+    color: var(--color-text);
+    margin-block: 0.5rem 1rem;
     max-width: 18ch;
+    text-wrap: balance;
+    letter-spacing: -0.03em;
   }
 
   .services-stack {
@@ -101,11 +114,13 @@ import { services } from '../data/services';
     gap: 1rem;
   }
   .service-num {
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     font-size: var(--fs-2xl);
-    font-weight: var(--fw-bold);
-    color: var(--color-cyan);
+    font-weight: var(--fw-medium);
+    color: var(--color-accent);
     line-height: 1;
+    letter-spacing: var(--tracking-tight);
+    text-shadow: 0 0 24px rgba(0, 200, 255, 0.4);
   }
   .icon-wrap {
     display: inline-flex;
@@ -113,21 +128,29 @@ import { services } from '../data/services';
     justify-content: center;
     width: 48px;
     height: 48px;
-    border-radius: var(--radius-md);
-    background: var(--color-cyan-soft);
-    color: var(--color-cyan);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    color: var(--color-accent);
+    border: 1px solid var(--color-border);
   }
   .service-body h2 {
+    font-family: var(--font-display);
     font-size: var(--fs-2xl);
-    color: var(--color-navy);
+    font-weight: var(--fw-medium);
+    color: var(--color-text);
     margin-bottom: 0.5rem;
     max-width: 24ch;
+    letter-spacing: var(--tracking-tight);
+    text-wrap: balance;
   }
   .service-tagline {
-    font-size: var(--fs-md);
-    color: var(--color-cyan);
-    font-weight: var(--fw-semibold);
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    color: var(--color-accent);
+    font-weight: var(--fw-medium);
     margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
   }
   .service-body > p {
     color: var(--color-text-muted);
@@ -141,12 +164,13 @@ import { services } from '../data/services';
     margin-top: var(--space-6);
   }
   .cols h3 {
+    font-family: var(--font-mono);
     font-size: var(--fs-xs);
     text-transform: uppercase;
-    letter-spacing: 0.16em;
-    color: var(--color-navy);
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--color-accent);
     margin-bottom: 1rem;
-    font-weight: var(--fw-semibold);
+    font-weight: var(--fw-medium);
   }
   .check-list {
     display: flex;
@@ -164,33 +188,24 @@ import { services } from '../data/services';
     content: '';
     position: absolute;
     left: 0;
-    top: 0.4em;
-    width: 14px;
-    height: 14px;
-    border-radius: 4px;
-    background: var(--color-cyan-soft);
-    border: 2px solid var(--color-cyan);
-  }
-  .check-list li::after {
-    content: '';
-    position: absolute;
-    left: 4px;
-    top: 0.5em;
-    width: 5px;
+    top: 0.55em;
+    width: 8px;
     height: 8px;
-    border: solid var(--color-cyan);
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
+    background: var(--color-accent);
+    box-shadow: 0 0 12px rgba(0, 200, 255, 0.6);
   }
 
   .cta-inner {
     text-align: center;
-    max-width: 700px;
+    max-width: 720px;
   }
   .cta-inner h2 {
+    font-family: var(--font-display);
     font-size: var(--fs-2xl);
+    font-weight: var(--fw-medium);
     margin-bottom: 1rem;
-    color: var(--color-white);
+    color: var(--color-text);
+    text-wrap: balance;
   }
   .cta-inner .lead {
     margin: 0 auto 2rem;

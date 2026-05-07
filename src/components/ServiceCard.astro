@@ -17,63 +17,70 @@ const { service, href = `/services#${service.slug}` } = Astro.props;
   <h3>{service.shortTitle}</h3>
   <p class="card-tagline">{service.tagline}</p>
   <span class="learn-more">
-    Learn more
-    <span aria-hidden="true">→</span>
+    <span class="learn-text">Learn more</span>
+    <span class="learn-arrow" aria-hidden="true">→</span>
   </span>
 </a>
 
 <style>
   .service-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 0.875rem;
     padding: var(--space-6);
-    background: var(--color-white);
+    background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     transition:
       transform var(--transition-base),
       border-color var(--transition-base),
-      box-shadow var(--transition-base);
-    position: relative;
+      box-shadow var(--transition-base),
+      background var(--transition-base);
     overflow: hidden;
+    isolation: isolate;
   }
   .service-card::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--gradient-cyan);
+    background: radial-gradient(ellipse 60% 80% at 50% 0%, rgba(0, 87, 255, 0.18), transparent 60%);
     opacity: 0;
     transition: opacity var(--transition-base);
-    z-index: 0;
-    height: 4px;
-    bottom: auto;
+    z-index: -1;
+    pointer-events: none;
   }
   .service-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--color-cyan);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+    border-color: var(--color-primary);
+    background: var(--color-surface-hover);
+    box-shadow: var(--glow-card-hover);
   }
   .service-card:hover::before {
     opacity: 1;
-  }
-  .service-card > * {
-    position: relative;
-    z-index: 1;
   }
   .icon-wrap {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     border-radius: var(--radius-md);
-    background: var(--color-cyan-soft);
-    color: var(--color-cyan);
+    background: var(--color-primary-soft);
+    color: var(--color-accent);
+    border: 1px solid var(--color-border);
+    transition: color var(--transition-base), border-color var(--transition-base);
+  }
+  .service-card:hover .icon-wrap {
+    color: var(--color-accent-hover);
+    border-color: var(--color-border-accent);
   }
   .service-card h3 {
+    font-family: var(--font-display);
     font-size: var(--fs-lg);
-    color: var(--color-navy);
+    font-weight: var(--fw-medium);
+    color: var(--color-text);
+    letter-spacing: var(--tracking-tight);
   }
   .card-tagline {
     color: var(--color-text-muted);
@@ -86,14 +93,17 @@ const { service, href = `/services#${service.slug}` } = Astro.props;
     align-items: center;
     gap: 0.4rem;
     margin-top: 0.5rem;
-    font-size: var(--fs-sm);
-    font-weight: var(--fw-semibold);
-    color: var(--color-cyan);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-medium);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--color-accent);
   }
-  .learn-more span {
+  .learn-arrow {
     transition: transform var(--transition-base);
   }
-  .service-card:hover .learn-more span {
-    transform: translateX(3px);
+  .service-card:hover .learn-arrow {
+    transform: translateX(4px);
   }
 </style>

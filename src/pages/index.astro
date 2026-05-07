@@ -16,9 +16,9 @@ const featuredStudies = caseStudies.slice(0, 2);
 >
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-bloom" aria-hidden="true"></div>
     <div class="container hero-inner">
-      <span class="eyebrow hero-eyebrow">Go-to-Market Engineering</span>
+      <span class="eyebrow hero-eyebrow">// GTM Engineering — operator-grade</span>
       <h1>
         Engineer the GTM motion that <span class="grad">your category leader</span> will spend the next decade copying.
       </h1>
@@ -32,7 +32,7 @@ const featuredStudies = caseStudies.slice(0, 2);
 
       <dl class="hero-stats">
         <div>
-          <dt>Avg. forecast accuracy lift</dt>
+          <dt>Avg forecast accuracy lift</dt>
           <dd>+32%</dd>
         </div>
         <div>
@@ -52,7 +52,7 @@ const featuredStudies = caseStudies.slice(0, 2);
     <div class="container">
       <div class="section-head">
         <div>
-          <span class="eyebrow">What we do</span>
+          <span class="eyebrow">// What we do</span>
           <h2>Four disciplines. One operating system for revenue.</h2>
         </div>
         <p class="lead">
@@ -74,7 +74,7 @@ const featuredStudies = caseStudies.slice(0, 2);
     <div class="container">
       <div class="section-head">
         <div>
-          <span class="eyebrow">Selected work</span>
+          <span class="eyebrow">// Selected work</span>
           <h2>What an engineered GTM motion actually delivers.</h2>
         </div>
         <a class="see-all" href="/case-studies">
@@ -103,48 +103,58 @@ const featuredStudies = caseStudies.slice(0, 2);
   .hero {
     position: relative;
     isolation: isolate;
-    padding-block: clamp(4rem, 10vw, 8rem) clamp(4rem, 8vw, 6rem);
-    background: var(--color-dark-navy);
-    color: var(--color-text-inverse);
+    padding-block: clamp(5rem, 10vw, 9rem) clamp(4rem, 8vw, 7rem);
     overflow: hidden;
   }
-  .hero-bg {
+  .hero-bloom {
     position: absolute;
-    inset: 0;
-    background-image:
-      var(--texture-noise),
-      var(--texture-dots-cyan),
-      radial-gradient(ellipse at 80% 0%, rgba(0, 194, 209, 0.18), transparent 55%),
-      radial-gradient(ellipse at 0% 100%, rgba(46, 230, 245, 0.10), transparent 60%),
-      var(--gradient-hero);
-    background-size: 240px 240px, 24px 24px, auto, auto, auto;
-    background-repeat: repeat;
+    inset: -10% -10% auto -10%;
+    height: 120%;
+    background:
+      radial-gradient(ellipse 50% 60% at 50% 30%, rgba(0, 87, 255, 0.4) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 30% 50%, rgba(0, 200, 255, 0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 35% 45% at 75% 60%, rgba(0, 87, 255, 0.22) 0%, transparent 60%);
+    filter: blur(40px);
     z-index: -1;
+    pointer-events: none;
+    animation: heroBloom 14s var(--ease-out) infinite alternate;
+  }
+  @keyframes heroBloom {
+    0%   { opacity: 0.7; transform: translate(0, 0); }
+    50%  { opacity: 1; transform: translate(2%, 2%); }
+    100% { opacity: 0.85; transform: translate(-2%, -1%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-bloom { animation: none; }
   }
   .hero-inner {
-    max-width: 880px;
+    max-width: 920px;
     text-align: center;
   }
   .hero-eyebrow {
-    color: var(--color-cyan-bright);
+    color: var(--color-accent);
   }
   .hero h1 {
+    font-family: var(--font-display);
     font-size: var(--fs-hero);
     line-height: 1.05;
     letter-spacing: -0.03em;
     margin-bottom: 1.5rem;
+    color: var(--color-text);
+    text-wrap: balance;
   }
   .grad {
-    background: var(--gradient-cyan);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
   .hero-lead {
+    font-family: var(--font-sans);
     font-size: var(--fs-md);
     line-height: var(--lh-relaxed);
-    color: var(--color-text-inverse-muted);
-    margin: 0 auto 2rem;
+    color: var(--color-text-muted);
+    margin: 0 auto 2.25rem;
     max-width: 64ch;
   }
   .hero-ctas {
@@ -152,28 +162,31 @@ const featuredStudies = caseStudies.slice(0, 2);
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 4rem;
+    margin-bottom: 4.5rem;
   }
   .hero-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     padding-top: 2.5rem;
-    border-top: 1px solid var(--color-border-inverse);
+    border-top: 1px solid var(--color-border);
     text-align: center;
   }
   .hero-stats dt {
+    font-family: var(--font-mono);
     font-size: var(--fs-xs);
     text-transform: uppercase;
-    letter-spacing: 0.16em;
-    color: var(--color-text-inverse-muted);
+    letter-spacing: var(--tracking-eyebrow);
+    color: var(--color-text-subtle);
     margin-bottom: 0.5rem;
   }
   .hero-stats dd {
     font-family: var(--font-display);
     font-size: var(--fs-2xl);
-    font-weight: var(--fw-bold);
-    color: var(--color-cyan-bright);
+    font-weight: var(--fw-medium);
+    color: var(--color-accent);
+    letter-spacing: var(--tracking-tight);
+    text-shadow: 0 0 30px rgba(0, 200, 255, 0.45);
   }
 
   .section-head {
@@ -184,19 +197,25 @@ const featuredStudies = caseStudies.slice(0, 2);
     align-items: end;
   }
   .section-head h2 {
+    font-family: var(--font-display);
     font-size: var(--fs-2xl);
-    color: var(--color-navy);
+    font-weight: var(--fw-medium);
+    color: var(--color-text);
     max-width: 18ch;
-  }
-  .section-dark .section-head h2,
-  .section-navy .section-head h2 {
-    color: var(--color-white);
+    text-wrap: balance;
   }
   .see-all {
     justify-self: end;
-    color: var(--color-cyan);
-    font-weight: var(--fw-semibold);
-    font-size: var(--fs-sm);
+    font-family: var(--font-mono);
+    color: var(--color-accent);
+    font-weight: var(--fw-medium);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    transition: color var(--transition-base);
+  }
+  .see-all:hover {
+    color: var(--color-accent-hover);
   }
 
   .service-grid {
@@ -213,12 +232,15 @@ const featuredStudies = caseStudies.slice(0, 2);
 
   .cta-inner {
     text-align: center;
-    max-width: 700px;
+    max-width: 720px;
   }
   .cta-inner h2 {
+    font-family: var(--font-display);
     font-size: var(--fs-2xl);
+    font-weight: var(--fw-medium);
     margin-bottom: 1rem;
-    color: var(--color-white);
+    color: var(--color-text);
+    text-wrap: balance;
   }
   .cta-inner .lead {
     margin: 0 auto 2rem;

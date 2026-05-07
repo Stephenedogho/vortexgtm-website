@@ -10,8 +10,9 @@ import { caseStudies } from '../data/caseStudies';
   description="See how VORTEX GTM has rebuilt revenue infrastructure, demand systems, and operations for B2B SaaS, AI, and developer-tools companies."
 >
   <section class="page-hero">
+    <div class="page-hero-bloom" aria-hidden="true"></div>
     <div class="container">
-      <span class="eyebrow">Case Studies</span>
+      <span class="eyebrow">// Case Studies</span>
       <h1>Engagements that re-platformed how teams generate revenue.</h1>
       <p class="lead">
         A selection of projects across data, AI, dev-tools, healthcare, and industrial SaaS. Every metric below is post-engagement — measured, not modeled.
@@ -40,18 +41,30 @@ import { caseStudies } from '../data/caseStudies';
 
 <style>
   .page-hero {
+    position: relative;
     padding-block: var(--space-9) var(--space-8);
-    background-color: var(--color-off-white);
-    background-image: var(--texture-dots);
-    background-size: 24px 24px;
-    background-repeat: repeat;
-    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .page-hero-bloom {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 50% 60% at 25% 50%, rgba(0, 87, 255, 0.32) 0%, transparent 60%),
+      radial-gradient(ellipse 45% 45% at 80% 30%, rgba(0, 200, 255, 0.18) 0%, transparent 60%);
+    filter: blur(40px);
+    z-index: -1;
+    pointer-events: none;
   }
   .page-hero h1 {
+    font-family: var(--font-display);
     font-size: var(--fs-3xl);
-    color: var(--color-navy);
-    margin-bottom: 1rem;
+    font-weight: var(--fw-medium);
+    color: var(--color-text);
+    margin-block: 0.5rem 1rem;
     max-width: 22ch;
+    text-wrap: balance;
+    letter-spacing: -0.03em;
   }
 
   .case-grid {
@@ -62,12 +75,15 @@ import { caseStudies } from '../data/caseStudies';
 
   .cta-inner {
     text-align: center;
-    max-width: 700px;
+    max-width: 720px;
   }
   .cta-inner h2 {
+    font-family: var(--font-display);
     font-size: var(--fs-2xl);
+    font-weight: var(--fw-medium);
     margin-bottom: 1rem;
-    color: var(--color-white);
+    color: var(--color-text);
+    text-wrap: balance;
   }
   .cta-inner .lead {
     margin: 0 auto 2rem;

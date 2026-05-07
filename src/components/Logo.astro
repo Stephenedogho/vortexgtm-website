@@ -4,8 +4,8 @@ interface Props {
   height?: number;
 }
 
-const { variant = 'dark', height = 32 } = Astro.props;
-const wordmarkColor = variant === 'light' ? '#ffffff' : '#0a2540';
+const { variant = 'light', height = 32 } = Astro.props;
+const wordmarkColor = variant === 'light' ? '#E8F4FF' : '#020B18';
 ---
 
 <a href="/" class="logo" aria-label="VORTEX GTM home">
@@ -19,8 +19,8 @@ const wordmarkColor = variant === 'light' ? '#ffffff' : '#0a2540';
   >
     <defs>
       <linearGradient id="vortex-gradient" x1="0" y1="0" x2="48" y2="40" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stop-color="#00c2d1" />
-        <stop offset="100%" stop-color="#2ee6f5" />
+        <stop offset="0%" stop-color="#0057FF" />
+        <stop offset="100%" stop-color="#00C8FF" />
       </linearGradient>
     </defs>
     <path
@@ -49,27 +49,30 @@ const wordmarkColor = variant === 'light' ? '#ffffff' : '#0a2540';
     display: inline-flex;
     align-items: center;
     gap: 0.625rem;
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     color: var(--wordmarkColor);
     transition: opacity var(--transition-base);
   }
   .logo:hover {
-    opacity: 0.8;
+    opacity: 0.85;
+  }
+  .logo svg {
+    filter: drop-shadow(0 0 8px rgba(0, 200, 255, 0.35));
   }
   .wordmark {
     display: inline-flex;
     align-items: baseline;
     gap: 0.25rem;
-    font-size: 1rem;
+    font-size: 0.9375rem;
     letter-spacing: 0.16em;
-    font-weight: var(--fw-bold);
+    font-weight: 500;
   }
   .wordmark strong {
-    font-weight: var(--fw-black);
+    font-weight: 500;
   }
   .wordmark em {
     font-style: normal;
-    color: var(--color-cyan);
-    font-weight: var(--fw-semibold);
+    color: var(--color-accent);
+    font-weight: 400;
   }
 </style>

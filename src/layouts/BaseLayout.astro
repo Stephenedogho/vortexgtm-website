@@ -47,13 +47,14 @@ const ogImageUrl = new URL(ogImage, site.url).toString();
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
 
-    <meta name="theme-color" content="#050f1f" />
+    <meta name="theme-color" content="#020B18" />
+    <meta name="color-scheme" content="dark" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Geist:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -70,11 +71,13 @@ const ogImageUrl = new URL(ogImage, site.url).toString();
         position: absolute;
         left: -9999px;
         top: 0;
-        background: var(--color-dark-navy);
-        color: var(--color-cyan);
+        background: var(--color-surface);
+        color: var(--color-accent);
+        border: 1px solid var(--color-border-accent);
         padding: 0.75rem 1rem;
         z-index: 100;
         font-size: var(--fs-sm);
+        font-family: var(--font-mono);
       }
       .skip-link:focus {
         left: 0;
@@ -86,6 +89,8 @@ const ogImageUrl = new URL(ogImage, site.url).toString();
       }
       main {
         flex: 1;
+        position: relative;
+        z-index: 1;
       }
     </style>
   </body>

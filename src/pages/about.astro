@@ -10,8 +10,9 @@ import { team, coreValues } from '../data/team';
   description="VORTEX GTM is a senior team of GTM operators-turned-engineers. We build revenue infrastructure for B2B SaaS and AI companies who refuse to scale by brute force."
 >
   <section class="page-hero">
+    <div class="page-hero-bloom" aria-hidden="true"></div>
     <div class="container">
-      <span class="eyebrow">About VORTEX</span>
+      <span class="eyebrow">// About VORTEX</span>
       <h1>A senior team of operators who got tired of building the same systems twice.</h1>
       <p class="lead">
         VORTEX exists because too many growth-stage companies inherit fragile go-to-market machinery — held together by spreadsheets, tribal knowledge, and the patience of one heroic ops lead. We rebuild that machinery as durable infrastructure, then teach your team to own it.
@@ -23,7 +24,7 @@ import { team, coreValues } from '../data/team';
     <div class="container">
       <div class="narrative">
         <div class="narrative-col">
-          <h2>Our story</h2>
+          <h2>// Our story</h2>
           <p>
             VORTEX was founded by a group of former CROs, RevOps leaders, and growth engineers who had each spent a decade inside high-growth B2B companies. We had seen the same pattern repeat across nine and ten-figure companies: sophisticated products sold by go-to-market teams running on brittle, improvised infrastructure.
           </p>
@@ -32,7 +33,7 @@ import { team, coreValues } from '../data/team';
           </p>
         </div>
         <div class="narrative-col">
-          <h2>Our approach</h2>
+          <h2>// Our approach</h2>
           <p>
             We treat GTM as engineering. That means: defined interfaces between teams, explicit data contracts between systems, version-controlled playbooks, and metrics with names and owners. It is unglamorous work. It is also the work that lets a 40-person sales team perform like a 200-person one.
           </p>
@@ -47,7 +48,7 @@ import { team, coreValues } from '../data/team';
   <section class="section section-soft">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Core values</span>
+        <span class="eyebrow">// Core values</span>
         <h2>Four principles we hold each other to.</h2>
       </div>
       <div class="values-grid">
@@ -65,7 +66,7 @@ import { team, coreValues } from '../data/team';
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">The team</span>
+        <span class="eyebrow">// The team</span>
         <h2>The partners and operators who will be in the room.</h2>
       </div>
       <div class="team-grid">
@@ -87,18 +88,30 @@ import { team, coreValues } from '../data/team';
 
 <style>
   .page-hero {
+    position: relative;
     padding-block: var(--space-9) var(--space-8);
-    background-color: var(--color-off-white);
-    background-image: var(--texture-dots);
-    background-size: 24px 24px;
-    background-repeat: repeat;
-    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .page-hero-bloom {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 50% 50% at 35% 35%, rgba(0, 87, 255, 0.30) 0%, transparent 60%),
+      radial-gradient(ellipse 45% 45% at 80% 70%, rgba(0, 200, 255, 0.16) 0%, transparent 60%);
+    filter: blur(40px);
+    z-index: -1;
+    pointer-events: none;
   }
   .page-hero h1 {
+    font-family: var(--font-display);
     font-size: var(--fs-3xl);
-    color: var(--color-navy);
-    margin-bottom: 1rem;
+    font-weight: var(--fw-medium);
+    color: var(--color-text);
+    margin-block: 0.5rem 1rem;
     max-width: 22ch;
+    text-wrap: balance;
+    letter-spacing: -0.03em;
   }
 
   .narrative {
@@ -107,9 +120,13 @@ import { team, coreValues } from '../data/team';
     gap: var(--space-7);
   }
   .narrative-col h2 {
-    font-size: var(--fs-xl);
-    color: var(--color-navy);
+    font-family: var(--font-mono);
+    font-size: var(--fs-md);
+    font-weight: var(--fw-medium);
+    color: var(--color-accent);
     margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
   }
   .narrative-col p {
     color: var(--color-text-muted);
@@ -122,9 +139,12 @@ import { team, coreValues } from '../data/team';
     margin-bottom: var(--space-7);
   }
   .section-head h2 {
+    font-family: var(--font-display);
     font-size: var(--fs-2xl);
-    color: var(--color-navy);
+    font-weight: var(--fw-medium);
+    color: var(--color-text);
     max-width: 24ch;
+    text-wrap: balance;
   }
 
   .values-grid {
@@ -134,20 +154,27 @@ import { team, coreValues } from '../data/team';
   }
   .value-card {
     padding: var(--space-6);
-    background: var(--color-white);
+    background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  }
+  .value-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--glow-card-hover);
   }
   .value-num {
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     font-size: var(--fs-md);
-    font-weight: var(--fw-bold);
-    color: var(--color-cyan);
+    font-weight: var(--fw-medium);
+    color: var(--color-accent);
     letter-spacing: 0.05em;
   }
   .value-card h3 {
+    font-family: var(--font-display);
     font-size: var(--fs-md);
-    color: var(--color-navy);
+    font-weight: var(--fw-medium);
+    color: var(--color-text);
     margin-block: 0.75rem 0.5rem;
   }
   .value-card p {
@@ -164,12 +191,15 @@ import { team, coreValues } from '../data/team';
 
   .cta-inner {
     text-align: center;
-    max-width: 700px;
+    max-width: 720px;
   }
   .cta-inner h2 {
+    font-family: var(--font-display);
     font-size: var(--fs-2xl);
+    font-weight: var(--fw-medium);
     margin-bottom: 1rem;
-    color: var(--color-white);
+    color: var(--color-text);
+    text-wrap: balance;
   }
   .cta-inner .lead {
     margin: 0 auto 2rem;

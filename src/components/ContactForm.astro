@@ -106,10 +106,10 @@ import Button from './Button.astro';
     flex-direction: column;
     gap: 1.25rem;
     padding: var(--space-6);
-    background: var(--color-white);
+    background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-md);
   }
   .row {
     display: grid;
@@ -122,10 +122,11 @@ import Button from './Button.astro';
     gap: 0.4rem;
   }
   label {
+    font-family: var(--font-mono);
     font-size: var(--fs-xs);
-    font-weight: var(--fw-semibold);
+    font-weight: var(--fw-medium);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: var(--tracking-wide);
     color: var(--color-text-muted);
   }
   input,
@@ -135,15 +136,29 @@ import Button from './Button.astro';
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
     font-size: var(--fs-sm);
-    background: var(--color-white);
-    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+    background: var(--color-bg-deep);
+    color: var(--color-text);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base), background var(--transition-base);
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-text-subtle);
   }
   input:focus,
   select:focus,
   textarea:focus {
     outline: none;
-    border-color: var(--color-cyan);
-    box-shadow: 0 0 0 3px var(--color-cyan-soft);
+    border-color: var(--color-accent);
+    background: var(--color-bg);
+    box-shadow: 0 0 0 3px rgba(0, 200, 255, 0.18), 0 0 24px rgba(0, 200, 255, 0.18);
+  }
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1 L6 6 L11 1' stroke='%2300C8FF' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.875rem center;
+    padding-right: 2.25rem;
   }
   textarea {
     resize: vertical;
@@ -152,12 +167,16 @@ import Button from './Button.astro';
   }
   .legal-note {
     font-size: var(--fs-xs);
-    color: var(--color-text-muted);
+    color: var(--color-text-subtle);
     line-height: var(--lh-relaxed);
   }
   .legal-note a {
-    color: var(--color-cyan);
+    color: var(--color-accent);
     text-decoration: underline;
+    text-decoration-color: var(--color-border-accent);
+  }
+  .legal-note a:hover {
+    text-decoration-color: var(--color-accent);
   }
   .actions {
     display: flex;
