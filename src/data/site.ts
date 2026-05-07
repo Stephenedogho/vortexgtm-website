@@ -6,7 +6,7 @@ export interface NavLink {
 export interface SocialLink {
   label: string;
   href: string;
-  icon: 'linkedin' | 'twitter' | 'github';
+  icon: 'linkedin' | 'twitter';
 }
 
 export interface SiteConfig {
@@ -56,8 +56,7 @@ export const site: SiteConfig = {
     { label: 'Terms of Service', href: '/terms' },
   ],
   social: [
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/vortexgtm', icon: 'linkedin' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/vortexgtm/', icon: 'linkedin' },
     { label: 'X / Twitter', href: 'https://x.com/vortexgtm', icon: 'twitter' },
-    { label: 'GitHub', href: 'https://github.com/vortexgtm', icon: 'github' },
   ],
 };

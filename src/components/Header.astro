@@ -1,6 +1,5 @@
 ---
 import Logo from './Logo.astro';
-import Button from './Button.astro';
 import { site } from '../data/site';
 
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
@@ -27,10 +26,6 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
         })}
       </ul>
     </nav>
-
-    <div class="header-cta">
-      <Button href="/contact" variant="primary" size="md">Book a call</Button>
-    </div>
   </div>
 </header>
 
@@ -84,11 +79,6 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
   }
   @media (max-width: 820px) {
     .primary-nav {
-      display: none;
-    }
-  }
-  @media (max-width: 520px) {
-    .header-cta {
       display: none;
     }
   }
