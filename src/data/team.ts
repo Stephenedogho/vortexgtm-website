@@ -7,36 +7,25 @@ export interface TeamMember {
 
 export const team: TeamMember[] = [
   {
-    name: 'Ada Okonkwo',
-    role: 'Founder & Managing Partner',
-    bio: 'Former VP Revenue Operations at two PE-backed B2B SaaS exits. Ada founded VORTEX to give growth-stage teams the GTM engineering depth that usually only sits inside late-stage companies.',
-    initials: 'AO',
+    name: 'Stephen Edogho',
+    role: 'Senior GTM Engineer',
+    bio: 'Stephen architects outbound infrastructure and revenue systems for B2B clients, specializing in cold email deliverability, lead enrichment, and automation across the full GTM stack.',
+    initials: 'SE',
   },
   {
-    name: 'Marcus Reinhardt',
-    role: 'Partner, Revenue Infrastructure',
-    bio: 'Marcus has architected revenue stacks for Series A through pre-IPO companies. Previously led RevOps engineering at a public data infrastructure company.',
-    initials: 'MR',
+    name: 'Solomon Anyawua',
+    role: 'Junior GTM',
+    bio: 'Solomon supports campaign execution and GTM operations, helping clients turn strategy into running systems.',
+    initials: 'SA',
   },
   {
-    name: 'Priya Venkatesan',
-    role: 'Partner, Demand Engineering',
-    bio: 'Priya built and scaled demand programs that powered three companies past $100M ARR. She specializes in compounding inbound systems and AI-augmented outbound.',
-    initials: 'PV',
-  },
-  {
-    name: 'Theo Lambert',
-    role: 'Partner, Product-Led Growth',
-    bio: 'Theo led growth at two PLG-first companies, including one that went from launch to $50M ARR in 22 months. He focuses on activation, monetization, and PQL-to-pipeline plumbing.',
-    initials: 'TL',
-  },
-  {
-    name: 'Sasha Brennan',
-    role: 'Head of Client Strategy',
-    bio: 'Sasha translates business goals into GTM engineering roadmaps. She previously ran strategy at a Tier-1 GTM advisory and operated as Chief of Staff to a public-company CRO.',
-    initials: 'SB',
+    name: 'Faith Ehimen',
+    role: 'SDR',
+    bio: 'Faith drives outbound prospecting and pipeline generation, connecting VORTEX clients with the right conversations.',
+    initials: 'FE',
   },
 ];
+
 
 export interface CoreValue {
   title: string;
